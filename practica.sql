@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 30-01-2024 a las 23:32:31
+-- Tiempo de generación: 16-02-2024 a las 00:23:15
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -20,8 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `practica`
 --
-CREATE DATABASE IF NOT EXISTS `practica` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-USE `practica`;
 
 -- --------------------------------------------------------
 
@@ -37,6 +35,13 @@ CREATE TABLE `tareas` (
   `autor` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Volcado de datos para la tabla `tareas`
+--
+
+INSERT INTO `tareas` (`tarea`, `descripcion`, `estado`, `fecha_creacion`, `autor`) VALUES
+('Peluquerias pacheco', 'Proyecto de una pagina web para una peluquería', 'pendiente', '2024-01-31', 'jesus');
+
 -- --------------------------------------------------------
 
 --
@@ -49,6 +54,17 @@ CREATE TABLE `usuarios` (
   `email` varchar(40) NOT NULL,
   `clave` varchar(24) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `usuarios`
+--
+
+INSERT INTO `usuarios` (`nombre`, `apellido`, `email`, `clave`) VALUES
+('Fran', 'PHP', 'franphp@ucam.edu', 'gta6'),
+('jesus', 'martinez', 'jmartinez84@alu.ucam.edu', '1234'),
+('Jose', 'Manuel', 'joosema@ucam.edu', '1234'),
+('Marina', 'Costa', 'marinita5@gmail.com', '1234'),
+('Ronaldo', 'Gonzalez', 'Ronald@ucam.edu', 'rg');
 
 --
 -- Índices para tablas volcadas
