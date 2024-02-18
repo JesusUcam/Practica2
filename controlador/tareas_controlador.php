@@ -20,33 +20,39 @@ echo '  <form action="" method="post">
 }
 
 function home(){
-    require_once("modelo/productos_modelo.php");
+    require_once("modelo/tareas_modelo.php");
     $error = "";
-    $datos = new Productos_modelo();
+    $tareas = new tareas_modelo();
+    $usuarios = new tareas_modelo();
 
-    if (isset($_SESSION['nombre'])) {
+    if (isset($_SESSION['email'])) {
+
         if(isset($_POST['borrar'])){
             $nombre = isset($_POST['nombre'])?$_POST['nombre']: '';
             
-            if($datos->borrar($nombre)) $error = "Borrado correctamente";
+            if($tareas->borrar($nombre)) $error = "Borrado correctamente";
             else $error = "Error al borrar";
             
         } elseif(isset($_POST['insertar'])){
 
             $nombre = isset($_POST['nombre'])?$_POST['nombre']: '';
-            $cantidad = isset($_POST['cantidad'])?$_POST['cantidad']: '';
             $descripcion = isset($_POST['descripcion'])?$_POST['descripcion']: '';
+            $estado = isset($_POST['estado'])?$_POST['estado']: '';
+            $fecha_creacion = isset($_POST['fecha_creacion'])?$_POST['fecha_creacion']: '';
+            $autor = isset($_POST['autor'])?$_POST['autor']: '';
 
-            if($datos->insertar($nombre, $cantidad, $descripcion)) $error = "Insertado correctamente.";
+            console_log($nombre, $descripcion, $estado, $fecha_creacion, $autor);
+
+            if($tareas->insertar($nombre, $descripcion, $estado, $fecha_creacion, $autor)) $error = "Insertado correctamente.";
             else $error = "Error al insertar.";
 
         } elseif (isset($_POST["modificar"])) {
 
             $nombre=isset($_POST["nombre"])?$_POST["nombre"]:'';
-            $cantidad=isset($_POST["cantidad"])?$_POST["cantidad"]:'';
             $descripcion=isset($_POST["descripcion"])?$_POST["descripcion"]:'';
+            $estado=isset($_POST["estado"])?$_POST["estado"]:'';
             
-            if ($datos->modificar($nombre, $cantidad, $descripcion)) {
+            if ($tareas->modificar($nombre, $descripcion, $estado, $fecha_creacion, $autor)) {
                 $error = "Modificado correctamente";
             } else {
                 $error = "Error al modificar";
@@ -55,7 +61,8 @@ function home(){
         }
     }
 
-    $array_datos = $datos->get_datos();
-    require_once("vista/productos_vista.php");
+    $array_tareas = $tareas->get_tareas();
+    $array_usuarios2 = $usuarios->get_usuarios2();
+    require_once("vista/tareas_vista.php");
 }
 ?>
