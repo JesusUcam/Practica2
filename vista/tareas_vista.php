@@ -62,7 +62,7 @@ if (isset($_SESSION['email'])) {
                   <input type='hidden' id='estado".$value['nombre']."' value='" . $value['estado'] . "'>
                   <input type='hidden' id='fecha_creacion".$value['nombre']."' value='" . $value['estado'] . "'>
                   <input type='hidden' id='autor".$value['nombre']."' value='" . $value['estado'] . "'>
-                  <input type='submit' name='modificar' value='Modificar' onclick=modificarProducto(`".$value['nombre']."`)></td>";
+                  <input type='submit' name='modificar' value='Modificar' onclick=modificarTarea(`".$value['nombre']."`)></td>";
                 echo "</tr>";
             }
             echo "</table>";

@@ -4,16 +4,20 @@ session_start();
 if(isset($_POST["accion"])){
     //estamos ante una llamada a ajax
 echo '  <form action="" method="post">
-<label for="fname">Nombre:</label>
-<input type="text" id="fname" name="nombre" value="'.$_POST['nombre'].'" readonly>
+<label for="fname">nombre:</label>
+<input type="text" id="nombre" name="nombre" value="'.$_POST['nombre'].'" readonly>
 
-<label for="fcantidad">cantidad:</label>
-<input type="text" id="lcantidad" name="cantidad" value="'.$_POST['cantidad'].'">
+<label for="fdesc">Descripcion:</label>
+<input type="text" id="descripcion" name="descripcion" value="'.$_POST['descripcion'].'">
 
-<label for="fdescripcion">Descripcion:</label>
-<input type="text" id="fdescripcion" name="descripcion" value="'.$_POST['descripcion'].'">
+<label for="festado">Estado:</label>
+<input type="text" id="estado" name="estado" value="'.$_POST['estado'].'">
 
+<label for="festado">Fecha de la tarea:</label>
+<input type="date" id="fecha_creacion" name="fecha_creacion" value="'.$_POST['fecha_creacion'].'">
+<br>
 <input type="submit" name="modificar" value="Modificar">
+<br>
 </form>
 <input type="submit" id="cancelar" name="cancelar" value="Cancelar" onclick=cancelar()>
 ';

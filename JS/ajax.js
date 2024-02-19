@@ -21,27 +21,27 @@ function modificarUsuario(usuario) {
       },
   });
 }
-
 function modificarTarea(tarea) {
-    $("#nuevo").hide();
-    $("#contenido").show();
-    $.ajax({
-      type: "POST",
-      data: {
-        accion: "modificarTarea",
-        titulo: $("#titulo" + tarea).val(),
-        descripcion: $("#descripcion" + tarea).val(),
-        estado: $("#estado" + tarea).val(),
-      },
-      url: "controlador/tareas_controlador.php",
-      success: function (response) {
-        $("#contenido").html(response);
-      },
-      error: function (error) {
-        console.log(error);
-      },
-    });
-  }
+  $("#nuevo").hide();
+  $("#contenido").show();
+  $.ajax({
+    type: "POST",
+    data: {
+      accion: "modificar",
+      nombre: $("#nombre" + tarea).val(),
+      descripcion: $("#descripcion" + tarea).val(),
+      estado: $("#estado" + tarea).val(),
+      fecha_creacion: $("#fecha_creacion" + tarea).val(),
+    },
+    url: "controlador/tareas_controlador.php",
+    success: function (response) {
+      $("#contenido").html(response);
+    },
+    error: function (error) {
+      console.log(error);
+    },
+  });
+}
 
   function cancelar() {
     $("#nuevo").show();
