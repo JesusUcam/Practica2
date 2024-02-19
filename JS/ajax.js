@@ -21,21 +21,37 @@ function modificarUsuario(usuario) {
       },
   });
 }
+
+function setupSelect(){
+  
+  let la = document.getElementById('listaautores').value
+  arrayFinal = la.split(", ");
+
+  console.log(document.getElementById('autor2'));
+  arrayFinal.forEach(function (email) {
+    document.getElementById('autor2').innerHTML += `<option value='${email}'>${email}</option>`;
+  });
+
+}
+
 function modificarTarea(tarea) {
+
   $("#nuevo").hide();
   $("#contenido").show();
   $.ajax({
     type: "POST",
     data: {
-      accion: "modificar",
+      accion: "modificarTarea",
       nombre: $("#nombre" + tarea).val(),
       descripcion: $("#descripcion" + tarea).val(),
       estado: $("#estado" + tarea).val(),
       fecha_creacion: $("#fecha_creacion" + tarea).val(),
+      autor: $("#autor" + tarea).val(),
     },
     url: "controlador/tareas_controlador.php",
     success: function (response) {
       $("#contenido").html(response);
+      setupSelect();
     },
     error: function (error) {
       console.log(error);

@@ -45,26 +45,50 @@ if (isset($_SESSION['email'])) {
 
         <?php
 
+
+        if (isset($array_usuarios2)) {
+            $listaautores = [];
+            foreach ($array_usuarios2 as $value) {
+                foreach ($value as $k => $value2) {
+                    if ($k == "email") {
+                        $listaautores[] = $value2;
+                    }
+                }
+            }
+            echo "<input type='hidden' id='listaautores' name='autores' value='".implode(", ",$listaautores)."'>";
+        }
+
+
+
         if (isset($array_tareas)) {
+            $listaautores = [];
             echo "<table border><tr><th>Nombre</th><th>Descripcion</th><th>Estado</th><th>Fecha creacion</th><th>autor</th></tr>";
             foreach ($array_tareas as $value) {
                 echo "<tr>";
                 foreach ($value as $k => $value2) {
                     echo "<td>$value2</td>";
+                    if ($k == "autor") {
+                        $listaautores[] = $value2;
+                    }
                 }
+
+                $nombreTarea = str_replace(" ", "_", $value['nombre']);
+
                 echo "<td><form action='' method='post'>
-                  <input type='hidden' name='nombre' value='".$value['nombre']."'>
+                <input type='hidden' name='nombre' value='".$value['nombre']."'>
                   <input type='submit' name='borrar' value='Borrar'>
                   </form></td>";
                 echo "<td>
-                  <input type='hidden' id='nombre".$value['nombre']."' value='" . $value['nombre'] . "'>
-                  <input type='hidden' id='descripcion".$value['nombre']."' value='" . $value['descripcion'] . "'>
-                  <input type='hidden' id='estado".$value['nombre']."' value='" . $value['estado'] . "'>
-                  <input type='hidden' id='fecha_creacion".$value['nombre']."' value='" . $value['estado'] . "'>
-                  <input type='hidden' id='autor".$value['nombre']."' value='" . $value['estado'] . "'>
-                  <input type='submit' name='modificar' value='Modificar' onclick=modificarTarea(`".$value['nombre']."`)></td>";
+                  <input type='hidden' id='nombre".$nombreTarea."' value='" . $value['nombre'] . "'>
+                  <input type='hidden' id='descripcion".$nombreTarea."' value='" . $value['descripcion'] . "'>
+                  <input type='hidden' id='estado".$nombreTarea."' value='" . $value['estado'] . "'>
+                  <input type='hidden' id='fecha_creacion".$nombreTarea."' value='" . $value['fecha_creacion'] . "'>
+                  <input type='hidden' id='autor".$nombreTarea."' value='" . $value['estado'] . "'>
+                  <input type='submit' name='modificar' value='Modificar' onclick=modificarTarea(`".$nombreTarea."`)></td>";
                 echo "</tr>";
             }
+            
+            echo "<input type='hidden' id='listaautores' name='autores' value='".implode(", ",$listaautores)."'>";
             echo "</table>";
         }
 } else {
@@ -72,7 +96,7 @@ if (isset($_SESSION['email'])) {
         <div class="container">
             <h3>Inicio de sesión</h3>
             <form action="" method="post">
-                <label for="nombre">Nombre de usuario:</label>
+                <label for="nombre">Email de usuario:</label>
                 <input type="text" name="nombre" id="nombre">
                 <br><br>
                 <label for="clave">Contraseña:</label>

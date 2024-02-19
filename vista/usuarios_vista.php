@@ -11,10 +11,10 @@ if (isset($_SESSION['email'])) {
             <form action="" method="post">
 
                 <label for="femail">email:</label>
-                <input type="text" id="femail" name="email" placeholder="Email..">
+                <input type="email" id="femail" name="email" placeholder="Email...">
 
                 <label for="fname">Usuario:</label>
-                <input type="text" id="fname" name="nombre" placeholder="Nombre de usuario..">
+                <input type="text" id="fname" name="nombre" placeholder="Nombre...">
 
                 <label for="lclave">Contraseña:</label>
                 <input type="password" id="lclave" name="clave" placeholder="Contraseña..">
@@ -57,7 +57,7 @@ if (isset($_SESSION['email'])) {
         <div class="container">
             <h3>Inicio de sesión</h3>
             <form action="index.php" method="post">
-                <label for="email">email de usuario:</label>
+                <label for="email">Email de usuario:</label>
                 <input type="text" name="email" id="email">
                 <br><br>
                 <label for="clave">Contraseña:</label>

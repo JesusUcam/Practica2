@@ -3,7 +3,6 @@
 class tareas_modelo{
     private $db; //conexion con la bbdd
     private $tareas; //registros recuperados de la bbdd
-    private $usuarios;
 
     public function __construct() {
         require_once("modelo/conectar.php");
@@ -39,8 +38,8 @@ class tareas_modelo{
         return $this->db->query($sql);
     }
 
-    function modificarTareas($nombre, $descripcion, $estado, $fecha_creacion, $autor){
-        $sql = "UPDATE tareas SET nombre='$nombre', descripcion='$descripcion', estado='$estado', fecha_creacion='$fecha_creacion' WHERE nombre='$nombre'";
+    function modificarTarea($nombre, $descripcion, $estado, $fecha_creacion, $autor){
+        $sql = "UPDATE tareas SET nombre='$nombre', descripcion='$descripcion', estado='$estado', fecha_creacion='$fecha_creacion', autor='$autor' WHERE nombre='$nombre'";
         return $this->db->query($sql);
     }
 }
