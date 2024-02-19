@@ -36,28 +36,30 @@ class usuarios_modelo
 
     public function borrar($email)
     {
-        $sql = "DELETE FROM usuarios WHERE nombre='$email'";
+        $sql = "DELETE FROM usuarios WHERE email='$email'";
+        return $this->db->query($sql);
+        /*
         if ($this->db->query($sql)) {
-            $sql1 = "DELETE FROM usuarios WHERE nombre='$email'";
+            $sql1 = "DELETE FROM usuarios WHERE email='$email'";
             return $this->db->query($sql1);
         }
-        return false;
+        return false;*/
     }
 
     public function insertar($email, $nombre, $apellidos, $clave){
 
-        $sql = "INSERT INTO usuarios (email, clave) VALUES ('$nombre', '$clave')";
-        //No entiendo para que se ha creado la tabla "usuarios" teniendo la de "usuarios"
-        if($this->db->query($sql)){
+        $sql = "INSERT INTO usuarios (email, nombre, apellidos, clave) VALUES ('$email', '$nombre', '$apellidos', '$clave')";
+        return $this->db->query($sql);
+        /*if($this->db->query($sql)){ 
             $sql1 = "INSERT INTO usuarios (email, nombre, apellidos) VALUES ('$email', '$nombre', $apellidos)";
             return $this->db->query($sql1);
 
             }
-            return false;
+            return false;*/
     }   
 
-    function modificarUsuario($email, $nombre, $apellidos){
-        $sql = "UPDATE usuarios SET apellidos=$apellidos, email='$email' WHERE nombre='$nombre'";
+    function modificarUsuario($email, $nombre, $apellidos, $clave){
+        $sql = "UPDATE usuarios SET  nombre='$nombre', apellidos='$apellidos', clave='$clave' WHERE email='$email'";
         return $this->db->query($sql);
     }
 }

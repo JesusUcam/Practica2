@@ -11,16 +11,16 @@ if (isset($_SESSION['email'])) {
             <form action="" method="post">
 
                 <label for="femail">email:</label>
-                <input type="text" id="femail" name="email" placeholder="email..">
+                <input type="text" id="femail" name="email" placeholder="Email..">
 
                 <label for="fname">Usuario:</label>
-                <input type="text" id="fname" name="email" placeholder="email de usuario..">
+                <input type="text" id="fname" name="nombre" placeholder="Nombre de usuario..">
 
                 <label for="lclave">Contraseña:</label>
                 <input type="password" id="lclave" name="clave" placeholder="Contraseña..">
 
                 <label for="fapellidos">apellidos:</label>
-                <input type="text" id="fapellidos" name="apellidos" placeholder="apellidos..">
+                <input type="text" id="fapellidos" name="apellidos" placeholder="Apellidos..">
 
                 <input type="submit" name="insertar" value="Insertar">
 
@@ -32,7 +32,7 @@ if (isset($_SESSION['email'])) {
         <?php
 
         if (isset($array_usuarios)) {
-            echo "<table border><tr><th>Nombre</th><th>Apellidos</th><th>Email</th></tr>";
+            echo "<table border><tr><th>Email</th><th>Nombre</th><th>Apellidos</th></tr>";
             foreach ($array_usuarios as $value) {
                 echo "<tr>";
                 foreach ($value as $k => $value2) {
@@ -43,11 +43,12 @@ if (isset($_SESSION['email'])) {
                   <input type='submit' name='borrar' value='Borrar'>
                   </form></td>";
                   echo "<td>
+                  <input type='hidden' id='email".$value['email']."' value='" . $value['email'] . "'>
                   <input type='hidden' id='nombre".$value['email']."' value='" . $value['nombre'] . "'>
                   <input type='hidden' id='apellidos".$value['email']."' value='" . $value['apellidos'] . "'>
-                  <input type='hidden' id='email".$value['email']."' value='" . $value['email'] . "'>
+                  <input type='hidden' id='clave".$value['email']."' value='" . $value['clave'] . "'>
                   <input type='submit' name='modificar' value='Modificar' onclick=modificarUsuario(`".$value['email']."`)></td>";
-                echo "</tr>";
+                  echo "</tr>";
             }
             echo "</table>";
         }

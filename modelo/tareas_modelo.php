@@ -39,7 +39,7 @@ class tareas_modelo{
         return $this->db->query($sql);
     }
 
-    function modificar($nombre, $descripcion, $estado, $fecha_creacion, $autor){
+    function modificarTareas($nombre, $descripcion, $estado, $fecha_creacion, $autor){
         $sql = "UPDATE tareas SET nombre='$nombre', descripcion='$descripcion', estado='$estado', fecha_creacion='$fecha_creacion' WHERE nombre='$nombre'";
         return $this->db->query($sql);
     }

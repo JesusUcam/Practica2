@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <link rel="stylesheet" type="text/css" href="css/estiloForm.css" media="screen" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="JS/ajax.js"></script>
+    <link rel="stylesheet" type="text/css" href="estilos/estiloForm.css" media="screen">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script> <!-- no se si esto va aqui -->
+    <script type="text/javascript" src="js/ajax.js"></script>
     
     <title>Document</title>
 </head>

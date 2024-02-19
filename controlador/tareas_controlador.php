@@ -65,6 +65,7 @@ function home(){
 
     $array_tareas = $tareas->get_tareas();
     $array_usuarios2 = $usuarios->get_usuarios2();
+    console_log($array_tareas);
     require_once("vista/tareas_vista.php");
 }
 ?>

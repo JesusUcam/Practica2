@@ -45,9 +45,9 @@ if (isset($_SESSION['email'])) {
 
         <?php
 
-        if (isset($array_datos)) {
+        if (isset($array_tareas)) {
             echo "<table border><tr><th>Nombre</th><th>Descripcion</th><th>Estado</th><th>Fecha creacion</th><th>autor</th></tr>";
-            foreach ($array_datos as $value) {
+            foreach ($array_tareas as $value) {
                 echo "<tr>";
                 foreach ($value as $k => $value2) {
                     echo "<td>$value2</td>";

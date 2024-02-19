@@ -4,14 +4,17 @@ session_start();
 if(isset($_POST["accion"])){
     //estamos ante una llamada a ajax
 echo '  <form action="" method="post">
-<label for="fname">email:</label>
-<input type="text" id="fname" name="email" value="'.$_POST['email'].'" readonly>
+<label for="femail">email:</label>
+<input type="text" id="femail" name="email" value="'.$_POST['email'].'" readonly>
 
 <label for="fnombre">nombre:</label>
 <input type="text" id="fnombre" name="nombre" value="'.$_POST['nombre'].'">
 
 <label for="fapellidos">apellidos:</label>
 <input type="text" id="lapellidos" name="apellidos" value="'.$_POST['apellidos'].'">
+
+<label for="fclave">clave:</label>
+<input type="text" id="clave" name="clave" value="'.$_POST['clave'].'">
 
 <input type="submit" name="modificar" value="Modificar">
 </form>
@@ -44,17 +47,17 @@ function home(){
             
         } elseif(isset($_POST['insertar'])){
             $email = isset($_POST['email'])?$_POST['email']: '';
-            $clave = isset($_POST['clave'])?$_POST['clave']: '';
-            $apellidos = isset($_POST['apellidos'])?$_POST['apellidos']: '';
             $nombre = isset($_POST['nombre'])?$_POST['nombre']: '';
+            $apellidos = isset($_POST['apellidos'])?$_POST['apellidos']: '';
+            $clave = isset($_POST['clave'])?$_POST['clave']: '';
 
-            if($usuarios->insertar($email, $nombre, $clave, $apellidos)) $error = "Insertado correctamente.";
+            if($usuarios->insertar($email, $nombre, $apellidos, $clave)) $error = "Insertado correctamente.";
             else $error = "Error al insertar.";
         }
 
     }
 
-    if (isset($_POST["modificarUsuario"])) {
+    if (isset($_POST["modificar"])) {
         /*
         if (isset($_POST["email"])) {
             $email=$_POST["email"]
@@ -65,7 +68,8 @@ function home(){
         $email=isset($_POST["email"])?$_POST["email"]:'';
         $nombre=isset($_POST["nombre"])?$_POST["nombre"]:'';
         $apellidos=isset($_POST["apellidos"])?$_POST["apellidos"]:'';
-        if ($usuarios->modificarUsuario($email, $apellidos, $nombre)) {
+        $clave=isset($_POST["clave"])?$_POST["clave"]:'';
+        if ($usuarios->modificarUsuario($email, $apellidos, $nombre, $clave)) {
             $error = "Modificado correctamente";
         } else {
             $error = "Error al modificar";
