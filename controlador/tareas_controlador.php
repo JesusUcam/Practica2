@@ -41,16 +41,18 @@ function home(){
             $fecha_creacion = isset($_POST['fecha_creacion'])?$_POST['fecha_creacion']: '';
             $autor = isset($_POST['autor'])?$_POST['autor']: '';
 
-            console_log($nombre, $descripcion, $estado, $fecha_creacion, $autor);
+            console_log($autor);
 
             if($tareas->insertar($nombre, $descripcion, $estado, $fecha_creacion, $autor)) $error = "Insertado correctamente.";
             else $error = "Error al insertar.";
 
         } elseif (isset($_POST["modificar"])) {
 
-            $nombre=isset($_POST["nombre"])?$_POST["nombre"]:'';
-            $descripcion=isset($_POST["descripcion"])?$_POST["descripcion"]:'';
-            $estado=isset($_POST["estado"])?$_POST["estado"]:'';
+            $nombre = isset($_POST['nombre'])?$_POST['nombre']: '';
+            $descripcion = isset($_POST['descripcion'])?$_POST['descripcion']: '';
+            $estado = isset($_POST['estado'])?$_POST['estado']: '';
+            $fecha_creacion = isset($_POST['fecha_creacion'])?$_POST['fecha_creacion']: '';
+            $autor = isset($_POST['autor'])?$_POST['autor']: '';
             
             if ($tareas->modificar($nombre, $descripcion, $estado, $fecha_creacion, $autor)) {
                 $error = "Modificado correctamente";

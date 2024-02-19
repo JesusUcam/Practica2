@@ -29,7 +29,7 @@ if (isset($_SESSION['email'])) {
 
                 <label for="fautor">autor:</label>
                 <!-- <input type="text" id="fautor" name="autor" placeholder="Autor..."> -->
-                <select name="cars" id="cars">
+                <select name="autor" id="autor">
                     <?php
                     foreach ($array_usuarios2 as $value) {
                         echo "<option value='" . $value['email'] . "'>" . $value['email'] . "</option>";

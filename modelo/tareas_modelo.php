@@ -33,12 +33,10 @@ class tareas_modelo{
         $sql = "DELETE FROM tareas WHERE nombre='$nombre'";
         return $this->db->query($sql);
     }
-
+    
     public function insertar($nombre, $descripcion, $estado, $fecha_creacion, $autor){
-
-        $sql = "INSERT INTO tareas (nombre, descripcion, estado, fecha_creacion, autor) VALUES ('$nombre, $descripcion, $estado, $fecha_creacion, $autor')";
+        $sql = "INSERT INTO tareas (nombre, descripcion, estado, fecha_creacion, autor) VALUES ('$nombre', '$descripcion', '$estado', '$fecha_creacion', '$autor')";
         return $this->db->query($sql);
-        
     }
 
     function modificar($nombre, $descripcion, $estado, $fecha_creacion, $autor){
