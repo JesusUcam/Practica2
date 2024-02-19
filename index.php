@@ -3,9 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <link rel="stylesheet" type="text/css" href="estilos/estiloForm.css" media="screen">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js" defer></script> <!-- no se si esto va aqui -->
+    <script type="text/javascript" src="js/ajax.js" defer></script>
+    
     <title>Document</title>
 </head>
 
@@ -13,6 +15,7 @@
     <?php
     require_once("controlador/front_controlador.php")
     ?>
+
 </body>
 
 </html>

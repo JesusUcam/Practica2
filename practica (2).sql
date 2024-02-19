@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 16-02-2024 a las 00:23:15
+-- Tiempo de generación: 19-02-2024 a las 00:57:12
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -20,6 +20,8 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `practica`
 --
+CREATE DATABASE IF NOT EXISTS `practica` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `practica`;
 
 -- --------------------------------------------------------
 
@@ -28,18 +30,19 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `tareas` (
-  `tarea` varchar(63) NOT NULL,
+  `nombre` varchar(63) NOT NULL,
   `descripcion` varchar(255) NOT NULL,
   `estado` varchar(20) NOT NULL,
   `fecha_creacion` date NOT NULL,
-  `autor` varchar(20) NOT NULL
+  `autor` varchar(40) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `tareas`
 --
 
-INSERT INTO `tareas` (`tarea`, `descripcion`, `estado`, `fecha_creacion`, `autor`) VALUES
+INSERT INTO `tareas` (`nombre`, `descripcion`, `estado`, `fecha_creacion`, `autor`) VALUES
+('1223222', '1234', 'Pendiente', '2024-02-07', 'franphp@ucam.edu'),
 ('Peluquerias pacheco', 'Proyecto de una pagina web para una peluquería', 'pendiente', '2024-01-31', 'jesus');
 
 -- --------------------------------------------------------
@@ -49,9 +52,9 @@ INSERT INTO `tareas` (`tarea`, `descripcion`, `estado`, `fecha_creacion`, `autor
 --
 
 CREATE TABLE `usuarios` (
-  `nombre` varchar(20) NOT NULL,
-  `apellido` varchar(40) NOT NULL,
   `email` varchar(40) NOT NULL,
+  `nombre` varchar(20) NOT NULL,
+  `apellidos` varchar(40) NOT NULL,
   `clave` varchar(24) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -59,12 +62,9 @@ CREATE TABLE `usuarios` (
 -- Volcado de datos para la tabla `usuarios`
 --
 
-INSERT INTO `usuarios` (`nombre`, `apellido`, `email`, `clave`) VALUES
-('Fran', 'PHP', 'franphp@ucam.edu', 'gta6'),
-('jesus', 'martinez', 'jmartinez84@alu.ucam.edu', '1234'),
-('Jose', 'Manuel', 'joosema@ucam.edu', '1234'),
-('Marina', 'Costa', 'marinita5@gmail.com', '1234'),
-('Ronaldo', 'Gonzalez', 'Ronald@ucam.edu', 'rg');
+INSERT INTO `usuarios` (`email`, `nombre`, `apellidos`, `clave`) VALUES
+('', '', '', '1'),
+('1', '', '1', '');
 
 --
 -- Índices para tablas volcadas
@@ -74,24 +74,14 @@ INSERT INTO `usuarios` (`nombre`, `apellido`, `email`, `clave`) VALUES
 -- Indices de la tabla `tareas`
 --
 ALTER TABLE `tareas`
-  ADD PRIMARY KEY (`tarea`),
+  ADD PRIMARY KEY (`nombre`),
   ADD KEY `fk_autor` (`autor`);
 
 --
 -- Indices de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  ADD PRIMARY KEY (`nombre`);
-
---
--- Restricciones para tablas volcadas
---
-
---
--- Filtros para la tabla `tareas`
---
-ALTER TABLE `tareas`
-  ADD CONSTRAINT `fk_autor` FOREIGN KEY (`autor`) REFERENCES `usuarios` (`nombre`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD PRIMARY KEY (`email`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
